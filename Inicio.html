@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/Gift.png" type="image/x-icon">
+    <title>Gift</title>
+    <!-- Fuente de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        /* Fondo inicial negro */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+        }
+        /* Fondo estrellado */
+        .space-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            z-index: 1;
+        }
+        /* Contenedor principal */
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            text-align: center;
+        }
+        /* Estilo del título principal */
+        .greetings {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+        /* Estilo de la descripción */
+        .description {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #7ed6df;
+            text-shadow: 0 0 10px rgba(126,214,223,0.5);
+        }
+        /* Estilo del botón */
+        .Button {
+            position: relative;
+            padding: 15px 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-transform: uppercase;
+            background: rgba(74, 105, 189, 0.2);
+            border: 2px solid #4a69bd;
+            border-radius: 10px;
+            cursor: pointer;
+            text-shadow: 0 0 5px #4a69bd, 0 0 15px rgba(74, 105, 189, 0.5);
+            transition: all 0.3s ease-in-out;
+        }
+        .Button:hover {
+            background: rgba(74, 105, 189, 0.5);
+            box-shadow: 0 0 20px rgba(74, 105, 189, 0.8);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo estrellado -->
+    <div class="space-background"></div>
+    <!-- Contenido principal -->
+    <div class="content">
+        <div class="greetings">
+            <span>Gift</span>
+        </div>
+        <div class="description">
+            <span>For you</span>
+        </div>
+        <div>
+            <button class="Button" onclick="redirectToPage()">¡Click For 👀!</button>
+        </div>
+    </div>
+    <script>
+        // Redirección al hacer clic en el botón
+        function redirectToPage() {
+            window.location.href = "Final.html";
+        }
+    </script>
+</body>
+</html>

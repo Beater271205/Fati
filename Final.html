@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/Ticket.png" type="image/x-icon" />
+    <title>Tickets 1D</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-color: #000;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: moveStar 5s linear infinite, glowStar 1.5s linear infinite;
+        }
+        @keyframes moveStar {
+            from {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh) translateX(100vw);
+                opacity: 0;
+            }
+        }
+        @keyframes glowStar {
+            0%, 100% {
+                box-shadow: 0 0 10px white, 0 0 20px blue, 0 0 30px red, 0 0 40px green;
+            }
+            50% {
+                box-shadow: 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px green;
+            }
+        }
+        .card {
+            width: 300px;
+            height: 400px;
+            perspective: 1000px;
+            position: relative;
+            z-index: 1;
+        }
+        .content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg); 
+        }
+        .card:hover .content {
+            transform: rotateY(180deg);
+        }
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.1); /* Efecto Glass */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .front {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .back {
+            transform: rotateY(180deg);
+            justify-content: space-between;
+            padding: 20px;
+            color: rgb(255, 255, 255);
+        }
+        .back .img {
+            position: relative;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .back .img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .front-content img {
+            max-width: 100px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="background" id="background"></div>
+    <div class="card">
+        <div class="content">
+            <div class="back">
+                <div class="img">
+                    <img src="C:/Users/chris/Documents/Vscode/D19/img/Encabezado.png" alt="One Direction">
+                </div>
+                <div class="back-content">
+                    <small class="badge">VIP / 2D</small>
+                    <div class="description">
+                        <div class="title">
+                            <p class="title">
+                                <strong>1D This Is Us</strong>
+                            </p>
+                        </div>
+                        <p class="card-footer">
+                            2 Tickets | December 19
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="front">
+                <div class="front-content">
+                    <img src="C:/Users/chris/Documents/Vscode/D19/img/Icon.png" alt="One Direction">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.width = `${Math.random() * 3}px`;
+            star.style.height = star.style.width;
+            const moveDelay = Math.random() * 5;
+            star.style.animationDelay = `${moveDelay}s`;
+            document.getElementById('background').appendChild(star);
+            setTimeout(() => {
+                star.remove();
+            }, (5 + moveDelay) * 1000);
+        }
+        setInterval(createStar, 50);
+    </script>
+    <audio id="audioController" autoplay muted>
+        <source src="sound/Best Song Ever_One Direction.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <script>
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('audioController');
+            // Desmutear y reproducir cuando esté permitido
+            audio.muted = false;
+            const playAudio = async () => {
+                try {
+                    await audio.play();
+                    console.log("Audio reproduciéndose.");
+                } catch (error) {
+                    console.log("Reproducción bloqueada por el navegador:", error);
+                }
+            };
+            playAudio();
+        });
+    </script>
+</body>
+</html>
